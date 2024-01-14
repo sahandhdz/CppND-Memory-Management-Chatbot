@@ -17,8 +17,13 @@ private:
     ////
 
     // data handles (owned)
-    std::vector<GraphNode *> _nodes;
+    // std::vector<GraphNode *> _nodes;
+    // Changing to shared pointer
+    std::vector<std::shared_ptr<GraphNode>> _nodes;
+
     std::vector<GraphEdge *> _edges;
+    
+
 
     ////
     //// EOF STUDENT CODE
