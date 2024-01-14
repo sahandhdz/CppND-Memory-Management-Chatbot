@@ -70,6 +70,17 @@ ChatBot::ChatBot(ChatBot &&source){
     _image = source._image;
     source._image = NULL;
 
+    _currentNode = source._currentNode;
+    source._currentNode = nullptr;
+
+    _rootNode = source._rootNode;
+    source._rootNode = nullptr;
+
+    _chatLogic = source._chatLogic;
+    source._chatLogic = nullptr;
+
+    _chatLogic->SetChatbotHandle(this);
+
 
 }
 
@@ -80,6 +91,20 @@ ChatBot& ChatBot::operator=(ChatBot &&rhs){
         delete _image;
         _image =rhs._image;
         rhs._image = NULL;
+
+        delete _currentNode;
+        _currentNode = rhs._currentNode;
+        rhs._currentNode = nullptr;
+
+        delete _rootNode;
+        _rootNode = rhs._rootNode;
+        rhs._rootNode = nullptr;
+
+        delete _chatLogic;
+        _chatLogic = rhs._chatLogic;
+        rhs._chatLogic = nullptr;
+        
+        _chatLogic->SetChatLogicHandle(this);
     }
     return *this;
 }
